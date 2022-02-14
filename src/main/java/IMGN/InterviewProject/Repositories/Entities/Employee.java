@@ -1,15 +1,17 @@
 package IMGN.InterviewProject.Repositories.Entities;
 
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Objects;
 
-import javax.persistence.*;
-
 @Entity
 public class Employee {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "employee_id_generator")
+    @SequenceGenerator(name = "employee_id_generator", allocationSize = 1)
     private Long id;
     @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company_id;
     private String name;
     private String mobile_number;

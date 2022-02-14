@@ -2,13 +2,13 @@ package IMGN.InterviewProject.Repositories.Entities;
 
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 
 @Entity
 public class Company {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "company_id_generator")
+    @SequenceGenerator(name = "company_id_generator", allocationSize = 1)
     private Long id;
     private String name;
     private String telephone_number;
