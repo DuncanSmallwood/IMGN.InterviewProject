@@ -38,8 +38,8 @@ public class Employee {
         return id;
     }
 
-    public Company getCompanyId(){
-        return company_id;
+    public Long getCompanyId(){
+        return company_id.getId();
     }
 
     public String getName(){

@@ -4,9 +4,10 @@ import IMGN.InterviewProject.Repositories.Entities.Company;
 import IMGN.InterviewProject.Repositories.Entities.Employee;
 import IMGN.InterviewProject.Repositories.ICompanyRepository;
 import IMGN.InterviewProject.Repositories.IEmployeeRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class InterviewProjectController {
@@ -36,5 +37,17 @@ public class InterviewProjectController {
     }
 
     //get employee by company
+    @GetMapping("employees/{company_id}")
+    List<Employee> employeesByCompany(@PathVariable Long companyId){
+        List<Employee> allEmployees = employeeRepository.findAll();
+        List<Employee> toReturn = new ArrayList<>();
+        for (Employee e:
+             allEmployees) {
+            if(e.getCompanyId().equals(companyId)){
+                toReturn.add(e);
+            }
+        }
+        return toReturn;
+    }
     //delete one employee
 }
