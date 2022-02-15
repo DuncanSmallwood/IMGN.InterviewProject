@@ -50,4 +50,9 @@ public class InterviewProjectController {
         return toReturn;
     }
     //delete one employee
+
+    @DeleteMapping("/employee/{id}")
+    void deleteEmployee(@PathVariable Long id){
+        employeeRepository.deleteById(id);
+    }
 }
