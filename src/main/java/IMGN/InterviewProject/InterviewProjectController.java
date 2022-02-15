@@ -26,6 +26,15 @@ public class InterviewProjectController {
         }
         return companyRepository.save(newCompany);
     }
+
+    @PostMapping("/emloyee")
+    Employee newEmployee(@RequestBody Employee newEmployee){
+        if (employeeRepository.getById(newEmployee.getId()) != null) {
+            employeeRepository.getById(newEmployee.getId());
+        }
+        return employeeRepository.save(newEmployee);
+    }
+
     //get employee by company
     //delete one employee
 }
