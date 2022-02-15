@@ -19,6 +19,13 @@ public class InterviewProjectController {
     }
 
     //put/create company/employee
+    @PostMapping("/company")
+    Company newCompany(@RequestBody Company newCompany){
+        if (companyRepository.getById(newCompany.getId()) != null){
+            return companyRepository.getById(newCompany.getId());
+        }
+        return companyRepository.save(newCompany);
+    }
     //get employee by company
     //delete one employee
 }
